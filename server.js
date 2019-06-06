@@ -27,4 +27,7 @@ app.use(express.static("public"));
 const ImageController = require("./controllers/ImageController");
 //APi routes
 app.post("/upload", ImageController.uploadImage);
+app.get("/retrive", ImageController.retrieveImages);
+app.post("/remove", ImageController.removeImage);
+
 app.listen(3000, () => console.log("Server has started 3000"));
