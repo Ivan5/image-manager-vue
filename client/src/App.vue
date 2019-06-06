@@ -19,7 +19,8 @@ export default {
     return {
       api: {
         upload: "http://localhost:3000/upload",
-        retrive: "http://localhost:3000/retrive"
+        retrive: "http://localhost:3000/retrive",
+        remove: "http://localhost:3000/remove"
       },
       images: []
     };
@@ -31,6 +32,20 @@ export default {
     removeImage(image) {
       let index = this.images.indexOf(image);
       this.images.splice(index, 1);
+
+      fetch(this.api.remove, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(image)
+      })
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+        });
     }
   },
   beforeMount() {
