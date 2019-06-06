@@ -12,7 +12,7 @@ mongoose.connect(
     useNewUrlParser: true
   },
   err => {
-    if (er) console.error("Error: ", err);
+    if (err) console.error("Error: ", err);
 
     console.log("Connected to MongoDB");
   }

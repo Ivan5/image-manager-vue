@@ -1,24 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ImageUploader :api="api" v-on:imageUploaded="this.newImage"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import ImageUploader from "./components/ImageUploader.vue";
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: "app",
+  components: { ImageUploader },
+  data() {
+    return {
+      api: {
+        upload: "http://localhost:3000/upload"
+      },
+      images: []
+    };
+  },
+  methods: {
+    newImage(image) {
+      this.images.push(image);
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+body {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
